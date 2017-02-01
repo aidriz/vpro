@@ -1,0 +1,7 @@
+java -jar target/SpeechAPIDemo-1.0.jar nlspraak.ewi.utwente.nl:8889
+
+
+java -jar target/SpeechAPIDemo-1.0.jar nlspraak.ewi.utwente.nl:8890 adem speechdemo 127.0.0.1 9000
+
+
+java -jar target/SpeechAPIDemo-1.0.jar Speech_API_Server:Port UserID ContentID tecsserverIP tecsPort

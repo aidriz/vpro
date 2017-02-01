@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>vpro</groupId>
+    <artifactId>utils</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <build>
+		<plugins>
+	       <plugin>
+                <groupId>org.apache.thrift.tools</groupId>
+                <artifactId>maven-thrift-plugin</artifactId>
+                <version>0.1.11</version>
+                <configuration>
+                    <thriftExecutable>${basedir}/../../external-dependencies/thrift</thriftExecutable>
+                    <thriftSourceRoot>${basedir}/../thrift/</thriftSourceRoot>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-thrift-java</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <generator>java</generator>
+                            <outputDirectory>
+                                src/main/gen-java/
+                            </outputDirectory>
+                            <compileOutput>true</compileOutput>
+                        </configuration>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/main/gen-java/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>   
+     </build>
+ 
+    <developers>
+        <developer>
+            <id></id>
+            <name></name>
+            <email></email>
+        </developer>
+    </developers>
+
+ 
+   <dependencies>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>de.dfki.tecs</groupId>
+            <artifactId>libtecs</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+        <dependency>
+		  <groupId>log4j</groupId>
+		  <artifactId>log4j</artifactId>
+		  <version>1.2.17</version>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.5.2</version>
+        </dependency>
+    </dependencies>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+</project>
